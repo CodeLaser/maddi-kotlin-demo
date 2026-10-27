@@ -3,8 +3,8 @@ package demo.immutable
 import io.codelaser.maddi.annotation.ImmutableContainer
 
 /**
- * A contract on an interface: implementations must be immutable containers. Look for: the contract shown on the
- * interface, and [Circle] verified against it.
+ * A contract on an interface: implementations must be immutable containers. Look for: [Circle] verified against
+ * it. The interface's own verdict is the contract written on it, so no hint repeats it.
  */
 @ImmutableContainer
 interface Shape {

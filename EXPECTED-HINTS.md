@@ -94,7 +94,7 @@ After an analyzer change, the differences from this file are the point of the ex
 
 | Declaration | Hints |
 |---|---|
-| (type) | `@ImmutableContainer(hc=true)`, `@Independent` |
+| (type) | `@Independent` |
 | area() | `@NotModified` *(hidden by default)* |
 
 ## `demo.immutable.Snapshot`
@@ -173,8 +173,8 @@ After an analyzer change, the differences from this file are the point of the ex
 | (type) | `@Container`, `@Independent`, `@FinalFields` |
 | property sb | `@Independent`, `@Modified` |
 | build() | `@NotModified` |
-| period() | `@Fluent`, `@Independent`, `@Modified` *(hidden by default)* |
-| word(String) | `@Fluent`, `@Independent`, `@Modified` *(hidden by default)* |
+| period() | `@Fluent`, `@Independent` *(hidden by default)*, `@Modified` *(hidden by default)* |
+| word(String) | `@Fluent`, `@Independent` *(hidden by default)*, `@Modified` *(hidden by default)* |
 
 ## `demo.modification.Bag`
 
@@ -258,7 +258,7 @@ After an analyzer change, the differences from this file are the point of the ex
 | (type) | `@Container`, `@Independent`, `@Mutable` *(hidden by default)* |
 | property buffer | `@Independent`, `@Modified` |
 | add(int) | `@Modified` *(hidden by default)* |
-| log(String) | `@IgnoreModifications`, `@Modified` *(hidden by default)* |
+| log(String) | `@Modified` *(hidden by default)* |
 | twice(int) | `@NotModified` |
 
 ## `demo.rare.Clock`
@@ -274,8 +274,8 @@ After an analyzer change, the differences from this file are the point of the ex
 |---|---|
 | (type) | `@Container`, `@Independent`, `@FinalFields` |
 | property sb | `@Independent`, `@Modified` |
-| build() | `@NotModified`, `@Finalizer` |
-| line(String) | `@Fluent`, `@Independent`, `@Modified` *(hidden by default)* |
+| build() | `@NotModified` |
+| line(String) | `@Fluent`, `@Independent` *(hidden by default)*, `@Modified` *(hidden by default)* |
 
 ## `demo.rare.Settings`
 

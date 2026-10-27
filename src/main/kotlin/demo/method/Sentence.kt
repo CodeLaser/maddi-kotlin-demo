@@ -1,8 +1,9 @@
 package demo.method
 
 /**
- * A builder. Look for: `@Fluent` on the functions that return `this`, `@Modified` on them too, and `@NotModified` on
- * `build`.
+ * A builder. Look for: `@Fluent` on the functions that return `this`, and `@NotModified` on `build`. The fluent
+ * functions also modify, and are `@Independent`; both follow (a function modifies by default, and returning `this`
+ * is independent), so the hints show them under *Show all*.
  */
 class Sentence {
     private val sb = StringBuilder()
