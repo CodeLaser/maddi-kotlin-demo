@@ -34,16 +34,13 @@ demos differ, that is the Kotlin front end's doing, and worth a look.
 
 So that a missing hint is not mistaken for a broken plugin:
 
-- **Nullability:** as in Java, `@Nullable` also appears on parameters that no call passes null to, here even on
-  parameters Kotlin declares non-null (`Bag.add(item: String)`).
-- **`Color.next()`**, which reads `entries`, comes out `@Modified`.
+- **No nullability hints:** a Kotlin type already says whether it takes null, so the plugin shows no inferred
+  `@Nullable`/`@NotNull` on Kotlin declarations.
 - **Kotlin's generated accessors show no hints**: the analysis does give `getName`/`setName` and the others their
   `@GetSet`, but the accessors have no source position of their own, so the plugin has nowhere to put it. The
   property shows its field's verdict.
 - **By design:** `Snapshot` is `@FinalFields` and `@Dependent`, because `toList()` returns an `ArrayList` that the
   getter hands out (Java's `List.copyOf` is unmodifiable); and `LazyName.name`, a `var`, is never `@Final`.
-- **Fixed on `ws/maddi-null`, not yet merged (maddi-mod#73):** `Lookup`'s constructor parameter shows `@Modified`
-  (no hint for `Map.toMap()`, and K2 assigned a same-named constructor parameter to the property), and
-  `SettingsClient.configure`, which writes `Settings.level`, shows no `@StaticSideEffects`. After the merge,
-  regenerate `EXPECTED-HINTS.md`.
+- **Under investigation:** `Snapshot` and `Lookup` also show `@Immutable(hc=true,after="lines")` and
+  `after="entries"`, an eventual verdict on a class without a mark.
 - `@Commutable` (`Ranges`) is not shown, as in Java.

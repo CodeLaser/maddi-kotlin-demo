@@ -14,25 +14,22 @@ After an analyzer change, the differences from this file are the point of the ex
 | Declaration | Hints |
 |---|---|
 | (type) | `@Container`, `@Independent`, `@Immutable(hc=true,after="host,port")`, `@FinalFields` |
-| property host | `@Independent`, `@Modified`, `@NotNull` *(hidden by default)* |
-| property port | `@Independent`, `@Modified`, `@NotNull` *(hidden by default)* |
-| host() | `@NotModified`, `@Only(after="host")`, `@NotNull` *(hidden by default)* |
+| property host | `@Independent`, `@Modified` |
+| property port | `@Independent`, `@Modified` |
+| host() | `@NotModified`, `@Only(after="host")` |
 | init(String,int) | `@Mark("host,port")`, `@Modified` *(hidden by default)* |
 | port() | `@NotModified`, `@Only(after="port")` |
-| param h of init(String,int) | `@NotNull` *(hidden by default)* |
 
 ## `demo.eventual.Document`
 
 | Declaration | Hints |
 |---|---|
 | (type) | `@Container`, `@Independent`, `@Immutable(hc=true,after="text")`, `@FinalFields` |
-| property text | `@Independent`, `@Modified`, `@NotNull` *(hidden by default)* |
+| property text | `@Independent`, `@Modified` |
 | commit(String) | `@Mark("text")`, `@Modified` *(hidden by default)* |
 | edit(String) | `@Only(before="text")`, `@Modified` *(hidden by default)* |
 | isCommitted() | `@NotModified`, `@TestMark("text")` |
 | length() | `@NotModified(after="text")`, `@Modified` *(hidden by default)* |
-| param s of commit(String) | `@Nullable` |
-| param s of edit(String) | `@Nullable` |
 
 ## `demo.guard.WrongContainer`
 
@@ -40,16 +37,15 @@ After an analyzer change, the differences from this file are the point of the ex
 |---|---|
 | (type) | `@Immutable` |
 | fill(List) | `@NotModified` *(hidden by default)* |
-| param target of fill(List) | `@Independent` *(hidden by default)*, `@Modified`, `@NotNull` *(hidden by default)* |
+| param target of fill(List) | `@Independent` *(hidden by default)*, `@Modified` |
 
 ## `demo.guard.WrongImmutable`
 
 | Declaration | Hints |
 |---|---|
 | (type) | `@Container`, `@Independent`, `@FinalFields` |
-| property items | `@Independent`, `@Modified`, `@NotNull` *(hidden by default)* |
+| property items | `@Independent`, `@Modified` |
 | add(String) | `@Modified` *(hidden by default)* |
-| param s of add(String) | `@Nullable` |
 
 ## `demo.immutable.Circle`
 
@@ -63,19 +59,17 @@ After an analyzer change, the differences from this file are the point of the ex
 | Declaration | Hints |
 |---|---|
 | (type) | `@ImmutableContainer` |
-| property BLUE | `@Independent` *(hidden by default)*, `@NotModified` *(hidden by default)*, `@NotNull` *(hidden by default)* |
-| property GREEN | `@Independent` *(hidden by default)*, `@NotModified` *(hidden by default)*, `@NotNull` *(hidden by default)* |
-| property RED | `@Independent` *(hidden by default)*, `@NotModified` *(hidden by default)*, `@NotNull` *(hidden by default)* |
-| next() | `@Independent` *(hidden by default)*, `@Modified` *(hidden by default)* |
+| property BLUE | `@Independent` *(hidden by default)*, `@NotModified` *(hidden by default)* |
+| property GREEN | `@Independent` *(hidden by default)*, `@NotModified` *(hidden by default)* |
+| property RED | `@Independent` *(hidden by default)*, `@NotModified` *(hidden by default)* |
+| next() | `@Independent` *(hidden by default)*, `@NotModified` *(hidden by default)* |
 
 ## `demo.immutable.LazyName`
 
 | Declaration | Hints |
 |---|---|
 | (type) | `@Container`, `@Independent`, `@Mutable` *(hidden by default)* |
-| property name | `@NotNull` *(hidden by default)* |
-| name() | `@Modified` *(hidden by default)*, `@NotNull` *(hidden by default)* |
-| param name of constructor(String) | `@NotNull` *(hidden by default)* |
+| name() | `@Modified` *(hidden by default)* |
 
 ## `demo.immutable.Pair`
 
@@ -84,7 +78,7 @@ After an analyzer change, the differences from this file are the point of the ex
 | (type) | `@ImmutableContainer(hc=true)` |
 | property first | `@Independent(hc=true)` *(hidden by default)*, `@NotModified` *(hidden by default)* |
 | property second | `@Independent(hc=true)` *(hidden by default)*, `@NotModified` *(hidden by default)* |
-| swap() | `@Independent(hc=true)` *(hidden by default)*, `@NotModified` *(hidden by default)*, `@NotNull` *(hidden by default)* |
+| swap() | `@Independent(hc=true)` *(hidden by default)*, `@NotModified` *(hidden by default)* |
 | param first of constructor(Object,Object) | `@Independent(hc=true)` *(hidden by default)*, `@NotModified` *(hidden by default)* |
 | param second of constructor(Object,Object) | `@Independent(hc=true)` *(hidden by default)*, `@NotModified` *(hidden by default)* |
 
@@ -94,7 +88,7 @@ After an analyzer change, the differences from this file are the point of the ex
 |---|---|
 | (type) | `@ImmutableContainer` |
 | manhattan() | `@NotModified` *(hidden by default)* |
-| translate(int,int) | `@Independent` *(hidden by default)*, `@NotModified` *(hidden by default)*, `@NotNull` *(hidden by default)* |
+| translate(int,int) | `@Independent` *(hidden by default)*, `@NotModified` *(hidden by default)* |
 
 ## `demo.immutable.Shape`
 
@@ -107,22 +101,19 @@ After an analyzer change, the differences from this file are the point of the ex
 
 | Declaration | Hints |
 |---|---|
-| (type) | `@Container`, `@FinalFields`, `@Dependent` *(hidden by default)* |
-| property lines | `@NotModified` *(hidden by default)*, `@Dependent` *(hidden by default)*, `@NotNull` *(hidden by default)* |
+| (type) | `@Container`, `@Immutable(hc=true,after="lines")`, `@FinalFields`, `@Dependent` *(hidden by default)* |
+| property lines | `@NotModified` *(hidden by default)*, `@Dependent` *(hidden by default)* |
 | count() | `@NotModified` |
-| param lines of constructor(List) | `@Independent`, `@NotModified` *(hidden by default)*, `@NotNull` *(hidden by default)* |
+| param lines of constructor(List) | `@Independent`, `@NotModified` *(hidden by default)* |
 
 ## `demo.immutable.Tags`
 
 | Declaration | Hints |
 |---|---|
 | (type) | `@Container`, `@Independent`, `@FinalFields` |
-| property owner | `@NotNull` *(hidden by default)* |
-| property tags | `@Independent`, `@Modified`, `@NotNull` *(hidden by default)* |
+| property tags | `@Independent`, `@Modified` |
 | count() | `@NotModified` |
 | tag(String) | `@Modified` *(hidden by default)* |
-| param owner of constructor(String) | `@NotNull` *(hidden by default)* |
-| param tag of tag(String) | `@Nullable` |
 
 ## `demo.independence.Box`
 
@@ -137,43 +128,36 @@ After an analyzer change, the differences from this file are the point of the ex
 | Declaration | Hints |
 |---|---|
 | (type) | `@Container`, `@FinalFields`, `@Dependent` *(hidden by default)* |
-| property items | `@Modified`, `@Dependent` *(hidden by default)*, `@NotNull` *(hidden by default)* |
+| property items | `@Modified`, `@Dependent` *(hidden by default)* |
 | add(String) | `@Modified` *(hidden by default)* |
-| copy() | `@Independent`, `@NotModified`, `@NotNull` *(hidden by default)* |
-| exposed() | `@NotModified`, `@GetSet("items")`, `@Dependent` *(hidden by default)*, `@NotNull` *(hidden by default)* |
-| view() | `@UnmodifiableView`, `@NotModified`, `@Dependent` *(hidden by default)*, `@NotNull` *(hidden by default)* |
-| param item of add(String) | `@Nullable` |
+| copy() | `@Independent`, `@NotModified` |
+| exposed() | `@NotModified`, `@GetSet("items")`, `@Dependent` *(hidden by default)* |
+| view() | `@UnmodifiableView`, `@NotModified`, `@Dependent` *(hidden by default)* |
 
 ## `demo.independence.Wrapper`
 
 | Declaration | Hints |
 |---|---|
 | (type) | `@FinalFields`, `@Dependent` *(hidden by default)* |
-| property list | `@Modified`, `@Dependent` *(hidden by default)*, `@NotNull` *(hidden by default)* |
+| property list | `@Modified`, `@Dependent` *(hidden by default)* |
 | append(String) | `@Modified` *(hidden by default)* |
-| param list of constructor(List) | `@Modified`, `@Dependent` *(hidden by default)*, `@NotNull` *(hidden by default)* |
-| param s of append(String) | `@Nullable` |
+| param list of constructor(List) | `@Modified`, `@Dependent` *(hidden by default)* |
 
 ## `demo.method.Checks`
 
 | Declaration | Hints |
 |---|---|
 | (type) | `@ImmutableContainer` |
-| orDefault(String,String) | `@NotModified` *(hidden by default)*, `@NotNull` *(hidden by default)* |
+| orDefault(String,String) | `@NotModified` *(hidden by default)* |
 | requireNonNull(Object,String) | `@Identity`, `@Independent` *(hidden by default)*, `@NotModified` *(hidden by default)* |
 | requirePositive(int) | `@Identity`, `@NotModified` *(hidden by default)* |
-| param dflt of orDefault(String,String) | `@NotNull` *(hidden by default)* |
-| param s of orDefault(String,String) | `@Nullable` |
 | param t of requireNonNull(Object,String) | `@Independent` *(hidden by default)*, `@NotModified` *(hidden by default)* |
-| param what of requireNonNull(Object,String) | `@Nullable` |
 
 ## `demo.method.Person`
 
 | Declaration | Hints |
 |---|---|
 | (type) | `@Container`, `@Independent`, `@Mutable` *(hidden by default)* |
-| property name | `@NotNull` *(hidden by default)* |
-| param name of constructor(String,int) | `@NotNull` *(hidden by default)* |
 
 ## `demo.method.Ranges`
 
@@ -187,23 +171,20 @@ After an analyzer change, the differences from this file are the point of the ex
 | Declaration | Hints |
 |---|---|
 | (type) | `@Container`, `@Independent`, `@FinalFields` |
-| property sb | `@Independent`, `@Modified`, `@NotNull` *(hidden by default)* |
-| build() | `@NotModified`, `@NotNull` *(hidden by default)* |
-| period() | `@Fluent`, `@Independent`, `@Modified` *(hidden by default)*, `@NotNull` *(hidden by default)* |
-| word(String) | `@Fluent`, `@Independent`, `@Modified` *(hidden by default)*, `@NotNull` *(hidden by default)* |
-| param w of word(String) | `@Nullable` |
+| property sb | `@Independent`, `@Modified` |
+| build() | `@NotModified` |
+| period() | `@Fluent`, `@Independent`, `@Modified` *(hidden by default)* |
+| word(String) | `@Fluent`, `@Independent`, `@Modified` *(hidden by default)* |
 
 ## `demo.modification.Bag`
 
 | Declaration | Hints |
 |---|---|
 | (type) | `@Container`, `@Independent`, `@FinalFields` |
-| property items | `@Independent`, `@Modified`, `@NotNull` *(hidden by default)* |
+| property items | `@Independent`, `@Modified` |
 | add(String) | `@Modified` *(hidden by default)* |
 | contains(String) | `@NotModified` |
 | size() | `@NotModified` |
-| param item of add(String) | `@Nullable` |
-| param item of contains(String) | `@NotNull` *(hidden by default)* |
 
 ## `demo.modification.Counter`
 
@@ -219,15 +200,15 @@ After an analyzer change, the differences from this file are the point of the ex
 | Declaration | Hints |
 |---|---|
 | (type) | `@Container`, `@FinalFields`, `@Dependent` *(hidden by default)* |
-| property items | `@Modified`, `@Dependent` *(hidden by default)*, `@NotNull` *(hidden by default)* |
+| property items | `@Modified`, `@Dependent` *(hidden by default)* |
 | Companion.addTo(List,Item) | `@NotModified` *(hidden by default)* |
 | Companion.touchAll(List) | `@NotModified` *(hidden by default)* |
 | addOwn(Item) | `@Modified` *(hidden by default)* |
 | touchOwn() | `@Modified(hc=true)` |
-| param item of Companion.addTo(List,Item) | `@Independent` *(hidden by default)*, `@NotModified` *(hidden by default)*, `@Nullable` |
-| param item of addOwn(Item) | `@NotModified` *(hidden by default)*, `@Dependent` *(hidden by default)*, `@NotNull` *(hidden by default)* |
-| param list of Companion.addTo(List,Item) | `@Independent` *(hidden by default)*, `@Modified`, `@NotNull` *(hidden by default)* |
-| param list of Companion.touchAll(List) | `@Independent` *(hidden by default)*, `@Modified(hc=true)`, `@NotNull` *(hidden by default)* |
+| param item of Companion.addTo(List,Item) | `@Independent` *(hidden by default)*, `@NotModified` *(hidden by default)* |
+| param item of addOwn(Item) | `@NotModified` *(hidden by default)*, `@Dependent` *(hidden by default)* |
+| param list of Companion.addTo(List,Item) | `@Independent` *(hidden by default)*, `@Modified` |
+| param list of Companion.touchAll(List) | `@Independent` *(hidden by default)*, `@Modified(hc=true)` |
 
 ## `demo.modification.Item`
 
@@ -242,51 +223,43 @@ After an analyzer change, the differences from this file are the point of the ex
 |---|---|
 | (type) | `@Immutable` |
 | addTwice(List,String) | `@NotModified` *(hidden by default)* |
-| first(List) | `@NotModified` *(hidden by default)*, `@NotNull` *(hidden by default)* |
+| first(List) | `@NotModified` *(hidden by default)* |
 | sortInPlace(List) | `@NotModified` *(hidden by default)* |
-| param list of addTwice(List,String) | `@Independent` *(hidden by default)*, `@Modified`, `@NotNull` *(hidden by default)* |
-| param list of first(List) | `@Independent` *(hidden by default)*, `@NotModified` *(hidden by default)*, `@NotNull` *(hidden by default)* |
-| param list of sortInPlace(List) | `@Independent` *(hidden by default)*, `@Modified`, `@Nullable` |
-| param s of addTwice(List,String) | `@Nullable` |
+| param list of addTwice(List,String) | `@Independent` *(hidden by default)*, `@Modified` |
+| param list of first(List) | `@Independent` *(hidden by default)*, `@NotModified` *(hidden by default)* |
+| param list of sortInPlace(List) | `@Independent` *(hidden by default)*, `@Modified` |
 
 ## `demo.modification.Registry`
 
 | Declaration | Hints |
 |---|---|
 | (type) | `@Container`, `@FinalFields`, `@Dependent` *(hidden by default)* |
-| property ids | `@Modified`, `@Dependent` *(hidden by default)*, `@NotNull` *(hidden by default)* |
+| property ids | `@Modified`, `@Dependent` *(hidden by default)* |
 | clear() | `@Modified` *(hidden by default)* |
-| lookup(String) | `@Independent`, `@NotModified`, `@Nullable` |
+| lookup(String) | `@Independent`, `@NotModified` |
 | register(String,int) | `@Modified` *(hidden by default)* |
-| param name of lookup(String) | `@Nullable` |
-| param name of register(String,int) | `@Nullable` |
 
 ## `demo.nullability.Lookup`
 
 | Declaration | Hints |
 |---|---|
-| (type) | `@FinalFields`, `@Dependent` *(hidden by default)* |
-| property entries | `@NotModified`, `@Dependent` *(hidden by default)*, `@NotNull` *(hidden by default)* |
-| describe(String) | `@NotModified`, `@NotNull` *(hidden by default)* |
-| find(String) | `@NotModified`, `@Nullable` |
-| findOrEmpty(String) | `@NotModified`, `@NotNull` *(hidden by default)* |
+| (type) | `@Container`, `@Immutable(hc=true,after="entries")`, `@FinalFields`, `@Dependent` *(hidden by default)* |
+| property entries | `@NotModified` *(hidden by default)*, `@Dependent` *(hidden by default)* |
+| describe(String) | `@NotModified` |
+| find(String) | `@NotModified` |
+| findOrEmpty(String) | `@NotModified` |
 | name(String) | `@NotModified` |
-| param entries of constructor(Map) | `@Independent`, `@Modified`, `@NotNull` *(hidden by default)* |
-| param key of find(String) | `@NotNull` *(hidden by default)* |
-| param key of findOrEmpty(String) | `@NotNull` *(hidden by default)* |
-| param s of describe(String) | `@Nullable` |
-| param s of name(String) | `@NotNull` *(hidden by default)* |
+| param entries of constructor(Map) | `@Independent`, `@NotModified` *(hidden by default)* |
 
 ## `demo.rare.Audit`
 
 | Declaration | Hints |
 |---|---|
 | (type) | `@Container`, `@Independent`, `@Mutable` *(hidden by default)* |
-| property buffer | `@Independent`, `@Modified`, `@NotNull` *(hidden by default)* |
+| property buffer | `@Independent`, `@Modified` |
 | add(int) | `@Modified` *(hidden by default)* |
 | log(String) | `@IgnoreModifications`, `@Modified` *(hidden by default)* |
 | twice(int) | `@NotModified` |
-| param s of log(String) | `@Nullable` |
 
 ## `demo.rare.Clock`
 
@@ -300,10 +273,9 @@ After an analyzer change, the differences from this file are the point of the ex
 | Declaration | Hints |
 |---|---|
 | (type) | `@Container`, `@Independent`, `@FinalFields` |
-| property sb | `@Independent`, `@Modified`, `@NotNull` *(hidden by default)* |
-| build() | `@NotModified`, `@Finalizer`, `@NotNull` *(hidden by default)* |
-| line(String) | `@Fluent`, `@Independent`, `@Modified` *(hidden by default)*, `@NotNull` *(hidden by default)* |
-| param s of line(String) | `@Nullable` |
+| property sb | `@Independent`, `@Modified` |
+| build() | `@NotModified`, `@Finalizer` |
+| line(String) | `@Fluent`, `@Independent`, `@Modified` *(hidden by default)* |
 
 ## `demo.rare.Settings`
 
@@ -319,18 +291,15 @@ After an analyzer change, the differences from this file are the point of the ex
 | (type) | `@ImmutableContainer` |
 | bump() | `@StaticSideEffects`, `@NotModified` *(hidden by default)* |
 | compute(int) | `@NotModified` *(hidden by default)* |
-| configure() | `@NotModified` *(hidden by default)* |
+| configure() | `@StaticSideEffects`, `@NotModified` *(hidden by default)* |
 
 ## `demo.rare.StringsKt`
 
 | Declaration | Hints |
 |---|---|
 | isPalindrome(String) | `@NotModified` *(hidden by default)* |
-| reversed2(String) | `@NotModified` *(hidden by default)*, `@NotNull` *(hidden by default)* |
-| twice(String) | `@NotModified` *(hidden by default)*, `@NotNull` *(hidden by default)* |
-| param receiver of isPalindrome(String) | `@NotNull` *(hidden by default)* |
-| param receiver of reversed2(String) | `@NotNull` *(hidden by default)* |
-| param receiver of twice(String) | `@Nullable` |
+| reversed2(String) | `@NotModified` *(hidden by default)* |
+| twice(String) | `@NotModified` *(hidden by default)* |
 
 ## Guard findings
 
